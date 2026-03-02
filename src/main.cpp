@@ -37,6 +37,7 @@ class Window
             glutPassiveMotionFunc(Window::mouse);
             glutReshapeFunc(Window::reshape);
             glutFullScreen();
+            glutSetCursor(GLUT_CURSOR_NONE);
             glutMainLoop();
         }
         static void reshape(int width, int height) 
@@ -72,6 +73,7 @@ class Window
             glClear( GL_COLOR_BUFFER_BIT );
             
             draw_frame();
+            draw_line(Mouse_X, Mouse_Y, 0, 0, 255, 0, 0);
             glutSwapBuffers();
         }
         static void mouse(int x, int y)
@@ -82,7 +84,7 @@ class Window
             Mouse_Y = (1.0f - (relativeY / View_Height)) * 1080;
             if (Mouse_X < 0) Mouse_X = 0; if (Mouse_X > 1920) Mouse_X = 1920;
             if (Mouse_Y < 0) Mouse_Y = 0; if (Mouse_Y > 1080) Mouse_Y = 1080;
-            cout << "X: " << Mouse_X << " Y: " << Mouse_Y << endl;
+            glutPostRedisplay();
         }
         static void pixel(int x, int y, int red = 255, int green = 255, int blue = 255)
         {
@@ -103,7 +105,31 @@ class Window
                 pixel(1919, y);   
             }
         }
+        static void draw_line(int x1, int y1, int x2, int y2, int red, int green, int blue)
+        {
+            float dx = x2 - x1;
+            float dy = y2 - y1;
+            int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+            if (steps == 0) 
+            {
+                pixel(x1, y1, red, green, blue);
+                return;
+            }
+            float xInc = dx / (float)steps;
+            float yInc = dy / (float)steps;
+            float x = x1;
+            float y = y1;
+
+            for (int i = 0; i <= steps; i++) {
+                pixel((int)(x + 0.5), (int)(y + 0.5), red, green, blue);
+                x += xInc;
+                y += yInc;
+            }
+        }
+        
 };
+
+
 int Window::Window_Height = 0;
 int Window::Window_Width = 0;
 float Window::Scale_Factor = 0.0;
