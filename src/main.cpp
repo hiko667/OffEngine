@@ -4,17 +4,7 @@
 using namespace std;
 #define MATRIX_HEIGHT 1080
 #define MATRIX_WIDTH 1920
-
-enum Color
-{
-    WHITE = -1,
-    BLACK = 0,
-    RED = 1,
-    BLUE = 2,
-    YELLOW = 3,
-};
-
-
+#define POINT_SIZE 10.0f
 class Window
 {
     public:
@@ -57,10 +47,10 @@ class Window
             viewCenterX = (width - viewWidth) / 2;
             viewCenterY = (height - viewHeight) / 2;
             glViewport(viewCenterX, viewCenterY, viewWidth, viewHeight);
-            Scale_Factor = (float)viewWidth / 1920.0f;
+            Scale_Factor = (float)viewWidth / (float)MATRIX_WIDTH;
             glMatrixMode(GL_PROJECTION);
             glLoadIdentity();
-            gluOrtho2D(0, 1920, 0, 1080);
+            gluOrtho2D(0, MATRIX_WIDTH, 0, MATRIX_HEIGHT);
             glMatrixMode(GL_MODELVIEW);
             View_Height = viewHeight;
             View_Width = viewWidth;
@@ -80,29 +70,29 @@ class Window
         {
             float relativeX = x - View_X;
             float relativeY = y - View_Y;
-            Mouse_X = (relativeX / View_Width) * 1920;
-            Mouse_Y = (1.0f - (relativeY / View_Height)) * 1080;
-            if (Mouse_X < 0) Mouse_X = 0; if (Mouse_X > 1920) Mouse_X = 1920;
-            if (Mouse_Y < 0) Mouse_Y = 0; if (Mouse_Y > 1080) Mouse_Y = 1080;
+            Mouse_X = (relativeX / View_Width) * MATRIX_WIDTH;
+            Mouse_Y = (1.0f - (relativeY / View_Height)) * MATRIX_HEIGHT;
+            if (Mouse_X < 0) Mouse_X = 0; if (Mouse_X > MATRIX_WIDTH) Mouse_X = MATRIX_WIDTH;
+            if (Mouse_Y < 0) Mouse_Y = 0; if (Mouse_Y > MATRIX_HEIGHT) Mouse_Y = MATRIX_HEIGHT;
             glutPostRedisplay();
         }
         static void pixel(int x, int y, int red = 255, int green = 255, int blue = 255)
         {
             glBegin(GL_POINTS);
-            glPointSize(5.0f * Scale_Factor);
+            glPointSize(POINT_SIZE * Scale_Factor);
             glColor3ub(red, green, blue);
             glVertex2i(x, y);
             glEnd();
         }
         static void draw_frame()
         {
-            for (int x = 0; x <= 1920; x += 1) { 
+            for (int x = 0; x <= MATRIX_WIDTH; x += 1) { 
                 pixel(x, 0);
-                pixel(x, 1079);
+                pixel(x, MATRIX_HEIGHT - 2);
             }
-            for (int y = 0; y <= 1080; y += 1) {
+            for (int y = 0; y <= MATRIX_HEIGHT; y += 1) {
                 pixel(0, y);
-                pixel(1919, y);   
+                pixel(MATRIX_WIDTH - 2, y);   
             }
         }
         static void draw_line(int x1, int y1, int x2, int y2, int red, int green, int blue)
@@ -126,7 +116,7 @@ class Window
                 y += yInc;
             }
         }
-        
+
 };
 
 
