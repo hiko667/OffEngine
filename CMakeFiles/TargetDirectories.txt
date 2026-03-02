@@ -1,0 +1,3 @@
+C:/Users/stani/Desktop/opengl/test2/build/CMakeFiles/off_yourself.dir
+C:/Users/stani/Desktop/opengl/test2/build/CMakeFiles/edit_cache.dir
+C:/Users/stani/Desktop/opengl/test2/build/CMakeFiles/rebuild_cache.dir
