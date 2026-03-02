@@ -23,7 +23,7 @@ class Window
         static float Scale_Factor;
         static int Mouse_X;
         static int Mouse_Y;
-        static int View_Width, View_Height, View_X, View_Y
+        static int View_Width, View_Height, View_X, View_Y;
         Window(int height, int width, const char * name)
         {
             Window_Height = height;
@@ -61,6 +61,10 @@ class Window
             glLoadIdentity();
             gluOrtho2D(0, 1920, 0, 1080);
             glMatrixMode(GL_MODELVIEW);
+            View_Height = viewHeight;
+            View_Width = viewWidth;
+            View_X = viewCenterX;
+            View_Y = viewCenterY;
         }
         static void display() 
         {
@@ -72,10 +76,13 @@ class Window
         }
         static void mouse(int x, int y)
         {
-            Mouse_X = x;
-            Mouse_Y = y;
-            cout << Mouse_X << endl;
-            cout << Mouse_Y << endl;
+            float relativeX = x - View_X;
+            float relativeY = y - View_Y;
+            Mouse_X = (relativeX / View_Width) * 1920;
+            Mouse_Y = (1.0f - (relativeY / View_Height)) * 1080;
+            if (Mouse_X < 0) Mouse_X = 0; if (Mouse_X > 1920) Mouse_X = 1920;
+            if (Mouse_Y < 0) Mouse_Y = 0; if (Mouse_Y > 1080) Mouse_Y = 1080;
+            cout << "X: " << Mouse_X << " Y: " << Mouse_Y << endl;
         }
         static void pixel(int x, int y, int red = 255, int green = 255, int blue = 255)
         {
@@ -102,6 +109,10 @@ int Window::Window_Width = 0;
 float Window::Scale_Factor = 0.0;
 int Window::Mouse_X = 0;
 int Window::Mouse_Y = 0;
+int Window::View_Height = 0;
+int Window::View_Width = 0;
+int Window::View_X = 0;
+int Window::View_Y = 0;
 
 int main(int argc, char* argv[])
 {
