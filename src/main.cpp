@@ -5,6 +5,15 @@ using namespace std;
 #define MATRIX_HEIGHT 1080
 #define MATRIX_WIDTH 1920
 
+enum Color
+{
+    WHITE = -1,
+    BLACK = 0,
+    RED = 1,
+    BLUE = 2,
+    YELLOW = 3,
+};
+
 
 class Window
 {
@@ -12,6 +21,9 @@ class Window
         static int Window_Height;
         static int Window_Width;
         static float Scale_Factor;
+        static int Mouse_X;
+        static int Mouse_Y;
+        static int View_Width, View_Height, View_X, View_Y
         Window(int height, int width, const char * name)
         {
             Window_Height = height;
@@ -22,9 +34,8 @@ class Window
             glutInitWindowPosition(100, 100);
             glutCreateWindow(name); 
             glutDisplayFunc(Window::display);
-            glutMouseFunc(Window::mouse);
+            glutPassiveMotionFunc(Window::mouse);
             glutReshapeFunc(Window::reshape);
-            
             glutFullScreen();
             glutMainLoop();
         }
@@ -55,20 +66,22 @@ class Window
         {
             glClearColor( 0, 0, 0, 1 );
             glClear( GL_COLOR_BUFFER_BIT );
-
-
+            
             draw_frame();
             glutSwapBuffers();
         }
-        static void mouse(int button, int state, int x, int y)
+        static void mouse(int x, int y)
         {
-            
+            Mouse_X = x;
+            Mouse_Y = y;
+            cout << Mouse_X << endl;
+            cout << Mouse_Y << endl;
         }
-        static void pixel(int x, int y)
+        static void pixel(int x, int y, int red = 255, int green = 255, int blue = 255)
         {
             glBegin(GL_POINTS);
             glPointSize(5.0f * Scale_Factor);
-            glColor3ub(255, 255, 255);
+            glColor3ub(red, green, blue);
             glVertex2i(x, y);
             glEnd();
         }
@@ -87,7 +100,8 @@ class Window
 int Window::Window_Height = 0;
 int Window::Window_Width = 0;
 float Window::Scale_Factor = 0.0;
-
+int Window::Mouse_X = 0;
+int Window::Mouse_Y = 0;
 
 int main(int argc, char* argv[])
 {
