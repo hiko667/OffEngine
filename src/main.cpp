@@ -1,10 +1,59 @@
 #include <GL/gl.h>
 #include <GL/glut.h>
 #include <iostream>
+#include <list>
+#include <vector>
 using namespace std;
 #define MATRIX_HEIGHT 1080
 #define MATRIX_WIDTH 1920
 #define POINT_SIZE 10.0f
+#define FRAMES_PER_SECOND 30
+#define MILISECONDS_PER_FRAME 1000/FRAMES_PER_SECOND
+
+//structs
+struct Time
+{
+    int time1, time2;
+}; struct Time T;
+
+struct ColorRGB
+{
+    int r;
+    int g;
+    int b;
+};
+
+struct RelativePoint // describes relative position of point to the origin point of sprites
+{
+    int rX; //relative X
+    int rY; //relative Y
+};
+
+//functions
+struct ColorRGB getColor()
+{
+    
+}
+
+
+//classes
+class SpriteTemplate
+{
+    public:
+        vector<RelativePoint> points;
+        SpriteTemplate(string path)
+        {
+            
+        }
+        void addRelativePoint(int x, int y)
+        {
+            RelativePoint point;
+            point.rX = x;
+            point.rY = y;
+            points.push_back(point);
+        }
+
+};
 class Window
 {
     public:
@@ -18,7 +67,7 @@ class Window
         {
             Window_Height = height;
             Window_Width = width;
-            
+
             glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
             glutInitWindowSize(Window_Height, Window_Width);
             glutInitWindowPosition(100, 100);
@@ -30,6 +79,12 @@ class Window
             glutSetCursor(GLUT_CURSOR_NONE);
             glutMainLoop();
         }
+        //initialization functions
+        static void init(int s)
+        {
+
+        }
+        //event functions
         static void reshape(int width, int height) 
         {
             float targetRatio = 16.0f / 9.0f;
@@ -51,7 +106,7 @@ class Window
             glMatrixMode(GL_PROJECTION);
             glLoadIdentity();
             gluOrtho2D(0, MATRIX_WIDTH, 0, MATRIX_HEIGHT);
-            glMatrixMode(GL_MODELVIEW);
+            // glMatrixMode(GL_MODELVIEW); //line deleted for now, idk why fixes all the bad things in the world
             View_Height = viewHeight;
             View_Width = viewWidth;
             View_X = viewCenterX;
@@ -59,12 +114,29 @@ class Window
         }
         static void display() 
         {
-            glClearColor( 0, 0, 0, 1 );
-            glClear( GL_COLOR_BUFFER_BIT );
+            if(T.time1 - T.time2 >= MILISECONDS_PER_FRAME)
+            {
+                //functions to clear background
+                glClearColor( 0, 0, 0, 1 );
+                glClear( GL_COLOR_BUFFER_BIT );
+                draw_frame();
+                //here be all the graphic functions
+                // draw_line(0, 0, Mouse_X, Mouse_Y, 255, 255, 0);
+                list<RelativePoint> sprite;
+                for(int i = -10; i<=10; i++)
+                {
+                    RelativePoint point;
+                    point.rX = i;
+                    point.rY = 0;
+                    sprite.push_back(point);
+                }
+                draw_sprite(Mouse_X, Mouse_Y, sprite);
+                T.time2 = T.time1;
+                glutSwapBuffers();
+            }
+            T.time1 = glutGet(GLUT_ELAPSED_TIME);
+            glutPostRedisplay();
             
-            draw_frame();
-            draw_line(Mouse_X, Mouse_Y, 0, 0, 255, 0, 0);
-            glutSwapBuffers();
         }
         static void mouse(int x, int y)
         {
@@ -76,6 +148,7 @@ class Window
             if (Mouse_Y < 0) Mouse_Y = 0; if (Mouse_Y > MATRIX_HEIGHT) Mouse_Y = MATRIX_HEIGHT;
             glutPostRedisplay();
         }
+        //drawing functions
         static void pixel(int x, int y, int red = 255, int green = 255, int blue = 255)
         {
             glBegin(GL_POINTS);
@@ -110,12 +183,21 @@ class Window
             float x = x1;
             float y = y1;
 
-            for (int i = 0; i <= steps; i++) {
+            for (int i = 0; i <= steps; i++) 
+            {
                 pixel((int)(x + 0.5), (int)(y + 0.5), red, green, blue);
                 x += xInc;
                 y += yInc;
             }
         }
+        static void draw_sprite(int x, int y, list<RelativePoint> points)
+        {
+            for (RelativePoint point : points)
+            {
+                pixel(x+point.rX, y+point.rY);
+            }
+        }
+
 
 };
 
