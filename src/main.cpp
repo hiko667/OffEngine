@@ -1,8 +1,10 @@
+#define STB_IMAGE_IMPLEMENTATION
+#include <STB/stb_image.h>
 #include <GL/gl.h>
 #include <GL/glut.h>
 #include <iostream>
-#include <list>
 #include <vector>
+#include <fstream>
 using namespace std;
 #define MATRIX_HEIGHT 1080
 #define MATRIX_WIDTH 1920
@@ -23,37 +25,142 @@ struct ColorRGB
     int b;
 };
 
-struct RelativePoint // describes relative position of point to the origin point of sprites
+struct PixelVector // describes relative position of point to the origin point of sprites
 {
-    int rX; //relative X
-    int rY; //relative Y
+    int sX; //shift X
+    int sY; //shift Y
 };
 
-//functions
-struct ColorRGB getColor()
+struct RelativePoint
 {
-    
+    PixelVector shift;
+    ColorRGB color;
+};
+
+//enums
+enum Colors
+{
+    White = 0,
+    Black = 1,
+    Red = 2,
+    Yellow = 3,
+    Green = 4,
+    Blue = 5,
+    Purple = 6,
+    Orange = 7,
+    Brown = 8,
+    Pink = 9,
+};
+//functions
+struct ColorRGB getColor(Colors color)
+{
+    switch (color)
+    {
+    case 0:
+        return((ColorRGB){255, 255, 255});
+        break;
+    case 1:
+        return((ColorRGB){0, 0, 0});
+        break;
+    case 2:
+        return((ColorRGB){255, 0, 0});
+        break;
+    case 3:
+        return((ColorRGB){255, 255, 0});
+        break;
+    case 4:
+        return((ColorRGB){0, 255, 0});
+        break;
+    case 5:
+        return((ColorRGB){0, 0, 255});
+        break;
+    case 6:
+        return((ColorRGB){255, 0, 255});
+        break;
+    case 7:
+        return((ColorRGB){255, 165, 0});
+        break;
+    case 8:
+        return((ColorRGB){165, 42, 42});
+        break;
+    case 9:
+        return((ColorRGB){255, 192, 203});
+        break;
+    default:
+        return((ColorRGB){255, 255, 255});
+        break;
+    }
 }
 
-
-//classes
-class SpriteTemplate
+// classes
+class Costume
 {
     public:
         vector<RelativePoint> points;
-        SpriteTemplate(string path)
+        Costume(string path)
         {
-            
+            int height, width, channels;
+            unsigned char* data = stbi_load(path.c_str(), &width, &height, &channels, 4);
+            if(data == NULL)
+            {
+                cerr << "Error reading file: " << path << endl;
+                return;
+            }
+            int centerX = width / 2;
+            int centerY = height / 2;
+            for (int y = 0; y < height; y++) 
+            {
+                for (int x = 0; x < width; x++) 
+                {
+                    int index = (y * width + x) * 4;
+                    unsigned char r = data[index];
+                    unsigned char g = data[index + 1];
+                    unsigned char b = data[index + 2];
+                    unsigned char a = data[index + 3];
+                    if (a > 0) 
+                    {
+                        RelativePoint rp;
+                        rp.shift.sX = x - centerX;
+                        rp.shift.sY = y - centerY;
+                        rp.color.r = (int)r;
+                        rp.color.g = (int)g;
+                        rp.color.b = (int)b;
+                        points.push_back(rp);
+                    }
+                }
+            }
         }
         void addRelativePoint(int x, int y)
         {
             RelativePoint point;
-            point.rX = x;
-            point.rY = y;
+            point.shift.sX = x;
+            point.shift.sY = y;
             points.push_back(point);
         }
 
 };
+
+class Sprite
+{
+    public:
+        int x,y;
+        vector<Costume> costumes;
+        int currentCostume;
+        Sprite(int initialX, int initialY, Costume firstCostume)
+        {
+            x = initialX;
+            y = initialY;
+            costumes.push_back(firstCostume);
+            currentCostume = 0;
+        }
+        void Move(PixelVector vec)
+        {
+            this->x += vec.sX;
+            this->y += vec.sY;
+        }
+
+};
+
 class Window
 {
     public:
@@ -67,7 +174,6 @@ class Window
         {
             Window_Height = height;
             Window_Width = width;
-
             glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
             glutInitWindowSize(Window_Height, Window_Width);
             glutInitWindowPosition(100, 100);
@@ -121,16 +227,10 @@ class Window
                 glClear( GL_COLOR_BUFFER_BIT );
                 draw_frame();
                 //here be all the graphic functions
-                // draw_line(0, 0, Mouse_X, Mouse_Y, 255, 255, 0);
-                list<RelativePoint> sprite;
-                for(int i = -10; i<=10; i++)
-                {
-                    RelativePoint point;
-                    point.rX = i;
-                    point.rY = 0;
-                    sprite.push_back(point);
-                }
-                draw_sprite(Mouse_X, Mouse_Y, sprite);
+                draw_line(0, 0, Mouse_X, Mouse_Y, 255, 255, 0);
+                
+
+                
                 T.time2 = T.time1;
                 glutSwapBuffers();
             }
@@ -190,15 +290,15 @@ class Window
                 y += yInc;
             }
         }
-        static void draw_sprite(int x, int y, list<RelativePoint> points)
+        static void draw_sprite(Sprite sprite)
         {
-            for (RelativePoint point : points)
+            for(RelativePoint point : sprite.costumes[sprite.currentCostume].points)
             {
-                pixel(x+point.rX, y+point.rY);
+                int pixelX = sprite.x + point.shift.sX;
+                int pixelY = sprite.y + point.shift.sX;
+                pixel(pixelX, pixelY);
             }
         }
-
-
 };
 
 
