@@ -1,5 +1,6 @@
 CMakeFiles/off_yourself.dir/src/main.cpp.obj: \
  C:\Users\stani\Desktop\opengl\test2\src\main.cpp \
+ C:/Users/stani/Desktop/opengl/test2/include/main.h \
  C:/Users/stani/Desktop/opengl/test2/include/STB/stb_image.h \
  C:/msys64/ucrt64/include/stdio.h \
  C:/msys64/ucrt64/include/corecrt_stdio_config.h \

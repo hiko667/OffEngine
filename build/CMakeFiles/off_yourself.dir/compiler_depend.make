@@ -5,6 +5,7 @@ CMakeFiles/off_yourself.dir/src/main.cpp.obj: C:/Users/stani/Desktop/opengl/test
   C:/Users/stani/Desktop/opengl/test2/include/GL/freeglut_std.h \
   C:/Users/stani/Desktop/opengl/test2/include/GL/glut.h \
   C:/Users/stani/Desktop/opengl/test2/include/STB/stb_image.h \
+  C:/Users/stani/Desktop/opengl/test2/include/main.h \
   C:/msys64/ucrt64/include/GL/gl.h \
   C:/msys64/ucrt64/include/GL/glu.h \
   C:/msys64/ucrt64/include/_bsd_types.h \
@@ -460,23 +461,9 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avxvnniintrin.h:
 
 C:/msys64/ucrt64/include/GL/gl.h:
 
-C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/enqcmdintrin.h:
-
-C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_vector.h:
-
-C:/msys64/ucrt64/include/c++/15.2.0/bits/refwrap.h:
-
 C:/Users/stani/Desktop/opengl/test2/src/main.cpp:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/allocator.h:
-
-C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx10_2convertintrin.h:
-
-C:/msys64/ucrt64/include/imm.h:
-
-C:/msys64/ucrt64/include/c++/15.2.0/bits/streambuf.tcc:
-
-C:/msys64/ucrt64/include/_mingw.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/functexcept.h:
 
@@ -500,6 +487,16 @@ C:/msys64/ucrt64/include/c++/15.2.0/bits/basic_ios.h:
 
 C:/Users/stani/Desktop/opengl/test2/include/STB/stb_image.h:
 
+C:/msys64/ucrt64/include/c++/15.2.0/bits/cpp_type_traits.h:
+
+C:/msys64/ucrt64/include/c++/15.2.0/bits/exception_defines.h:
+
+C:/msys64/ucrt64/include/c++/15.2.0/debug/assertions.h:
+
+C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_function.h:
+
+C:/Users/stani/Desktop/opengl/test2/include/main.h:
+
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512vbmivlintrin.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/tr1/poly_hermite.tcc:
@@ -521,6 +518,14 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avxvnniint8intrin.h:
 C:/msys64/ucrt64/include/utilapiset.h:
 
 C:/msys64/ucrt64/include/_bsd_types.h:
+
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx10_2convertintrin.h:
+
+C:/msys64/ucrt64/include/imm.h:
+
+C:/msys64/ucrt64/include/c++/15.2.0/bits/streambuf.tcc:
+
+C:/msys64/ucrt64/include/_mingw.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/xmmintrin.h:
 
@@ -622,10 +627,6 @@ C:/msys64/ucrt64/include/c++/15.2.0/x86_64-w64-mingw32/bits/ctype_base.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/concept_check.h:
 
-C:/msys64/ucrt64/include/c++/15.2.0/bits/cpp_type_traits.h:
-
-C:/msys64/ucrt64/include/c++/15.2.0/bits/exception_defines.h:
-
 C:/msys64/ucrt64/include/c++/15.2.0/bits/ptr_traits.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/functional_hash.h:
@@ -676,6 +677,12 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/emmintrin.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/range_access.h:
 
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/enqcmdintrin.h:
+
+C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_vector.h:
+
+C:/msys64/ucrt64/include/c++/15.2.0/bits/refwrap.h:
+
 C:/msys64/ucrt64/include/wingdi.h:
 
 C:/msys64/ucrt64/include/objidl.h:
@@ -699,10 +706,6 @@ C:/msys64/ucrt64/include/pshpack1.h:
 C:/msys64/ucrt64/include/mciapi.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_construct.h:
-
-C:/msys64/ucrt64/include/c++/15.2.0/debug/assertions.h:
-
-C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_function.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_iterator.h:
 
