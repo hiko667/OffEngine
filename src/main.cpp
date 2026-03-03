@@ -125,10 +125,12 @@ class Costume
                         rp.color.r = (int)r;
                         rp.color.g = (int)g;
                         rp.color.b = (int)b;
+                        cout << x << " "<< y << " " << r << g<< b <<endl;
                         points.push_back(rp);
                     }
                 }
             }
+            stbi_image_free(data);
         }
         void addRelativePoint(int x, int y)
         {
@@ -146,11 +148,11 @@ class Sprite
         int x,y;
         vector<Costume> costumes;
         int currentCostume;
-        Sprite(int initialX, int initialY, Costume firstCostume)
+        Sprite(int initialX, int initialY, string firstCostumePath)
         {
             x = initialX;
             y = initialY;
-            costumes.push_back(firstCostume);
+            costumes.push_back(Costume(firstCostumePath));
             currentCostume = 0;
         }
         void Move(PixelVector vec)
@@ -170,6 +172,7 @@ class Window
         static int Mouse_X;
         static int Mouse_Y;
         static int View_Width, View_Height, View_X, View_Y;
+        static Sprite amogus;
         Window(int height, int width, const char * name)
         {
             Window_Height = height;
@@ -228,7 +231,7 @@ class Window
                 draw_frame();
                 //here be all the graphic functions
                 draw_line(0, 0, Mouse_X, Mouse_Y, 255, 255, 0);
-                
+                draw_sprite(amogus);
 
                 
                 T.time2 = T.time1;
@@ -311,6 +314,7 @@ int Window::View_Height = 0;
 int Window::View_Width = 0;
 int Window::View_X = 0;
 int Window::View_Y = 0;
+Sprite Window::amogus = Sprite(500, 500, "amogus.png");
 
 int main(int argc, char* argv[])
 {
@@ -318,4 +322,4 @@ int main(int argc, char* argv[])
     const char * name = "Kevin";
     Window w = Window(160, 120, name);
     return 0;
-} 
+}
