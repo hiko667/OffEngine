@@ -100,6 +100,7 @@ class Costume
         Costume(string path)
         {
             int height, width, channels;
+            stbi_set_flip_vertically_on_load(true);
             unsigned char* data = stbi_load(path.c_str(), &width, &height, &channels, 4);
             if(data == NULL)
             {
@@ -125,7 +126,6 @@ class Costume
                         rp.color.r = (int)r;
                         rp.color.g = (int)g;
                         rp.color.b = (int)b;
-                        cout << x << " "<< y << " " << r << g<< b <<endl;
                         points.push_back(rp);
                     }
                 }
@@ -298,8 +298,8 @@ class Window
             for(RelativePoint point : sprite.costumes[sprite.currentCostume].points)
             {
                 int pixelX = sprite.x + point.shift.sX;
-                int pixelY = sprite.y + point.shift.sX;
-                pixel(pixelX, pixelY);
+                int pixelY = sprite.y + point.shift.sY;
+                pixel(pixelX, pixelY, point.color.r, point.color.g, point.color.b);
             }
         }
 };
