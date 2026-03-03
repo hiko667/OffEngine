@@ -41,4 +41,9 @@ struct RelativePoint
     ColorRGB color;
 };
 
+struct Point
+{
+    int x;
+    int y;
+};
 #endif
