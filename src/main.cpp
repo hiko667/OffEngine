@@ -160,6 +160,11 @@ class Sprite
             this->x += vec.sX;
             this->y += vec.sY;
         }
+        void SetPosition(int x, int y)
+        {
+            this->x = x;
+            this->y = y;
+        }
 
 };
 
@@ -231,6 +236,7 @@ class Window
                 draw_frame();
                 //here be all the graphic functions
                 draw_line(0, 0, Mouse_X, Mouse_Y, 255, 255, 0);
+                amogus.SetPosition(Mouse_X, Mouse_Y);
                 draw_sprite(amogus);
 
                 
@@ -249,7 +255,7 @@ class Window
             Mouse_Y = (1.0f - (relativeY / View_Height)) * MATRIX_HEIGHT;
             if (Mouse_X < 0) Mouse_X = 0; if (Mouse_X > MATRIX_WIDTH) Mouse_X = MATRIX_WIDTH;
             if (Mouse_Y < 0) Mouse_Y = 0; if (Mouse_Y > MATRIX_HEIGHT) Mouse_Y = MATRIX_HEIGHT;
-            glutPostRedisplay();
+            // glutPostRedisplay(); //i dont know if we need ts
         }
         //drawing functions
         static void pixel(int x, int y, int red = 255, int green = 255, int blue = 255)
