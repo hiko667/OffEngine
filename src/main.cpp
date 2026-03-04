@@ -129,9 +129,14 @@ class Game
         {
 
         }
-        vector<GameObject> getObjectsToRender()
+        vector<Sprite> getSpritesToRender()
         {
-            return this->activeGameObjects;
+            vector<Sprite> sprites;
+            for (GameObject object : activeGameObjects)
+            {
+                sprites.push_back(object.getSprite());
+            }
+            return sprites;
         }
         void initializeObject(vector<string> costumes)
         {
@@ -281,7 +286,10 @@ class Window
         //rendering functions
         static void renderSprites()
         {
-
+            for(Sprite sprite : game.getSpritesToRender())
+            {
+                drawSprite(sprite);
+            }
         }
 };
 
