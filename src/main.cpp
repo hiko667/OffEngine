@@ -55,7 +55,7 @@ class Sprite
     public:
         int x,y;
         vector<Costume> costumes;
-        int currentCostume;
+        int currentCostume = 0;
         Sprite()
         {
             x = MATRIX_WIDTH/2;
@@ -63,6 +63,7 @@ class Sprite
         }
         Sprite(int initialX, int initialY)
         {
+            
             x = initialX;
             y = initialY;
         }
@@ -93,6 +94,7 @@ class GameObject
 {
     public:
         Sprite sprite;
+        string id;
         GameObject(vector<string> costumes)
         {
             sprite = Sprite(MATRIX_WIDTH/2, MATRIX_HEIGHT/2);
@@ -141,6 +143,7 @@ class Game
         void initializeObject(vector<string> costumes)
         {
             GameObject object = GameObject(costumes);
+            this->activeGameObjects.push_back(object);
         }
         
         
@@ -169,12 +172,13 @@ class Window
             glutReshapeFunc(Window::reshape);
             glutFullScreen();
             glutSetCursor(GLUT_CURSOR_NONE);
+            init();
             glutMainLoop();
         }
         //initialization functions
-        static void init(int s)
+        static void init()
         {
-
+            game.initializeObject({"amogus.png"});
         }
         //event functions
         static void reshape(int width, int height) 
@@ -214,7 +218,7 @@ class Window
                 drawFrame();
                 //here be all the graphic functions
                 drawLine(0, 0, Mouse_X, Mouse_Y, 255, 255, 0);
-                
+                renderSprites();
                 
                 T.time2 = T.time1;
                 glutSwapBuffers();
@@ -303,6 +307,7 @@ int Window::View_Height = 0;
 int Window::View_Width = 0;
 int Window::View_X = 0;
 int Window::View_Y = 0;
+Game Window::game = Game();
 
 int main(int argc, char* argv[])
 {
