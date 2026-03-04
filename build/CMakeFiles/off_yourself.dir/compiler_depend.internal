@@ -6,7 +6,6 @@ CMakeFiles/off_yourself.dir/src/main.cpp.obj
  C:/Users/stani/Desktop/opengl/test2/include/GL/freeglut_std.h
  C:/Users/stani/Desktop/opengl/test2/include/GL/glut.h
  C:/Users/stani/Desktop/opengl/test2/include/STB/stb_image.h
- C:/Users/stani/Desktop/opengl/test2/include/main.h
  C:/msys64/ucrt64/include/GL/gl.h
  C:/msys64/ucrt64/include/GL/glu.h
  C:/msys64/ucrt64/include/_bsd_types.h
@@ -450,4 +449,6 @@ CMakeFiles/off_yourself.dir/src/main.cpp.obj
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/xsaveoptintrin.h
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/xsavesintrin.h
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/xtestintrin.h
+ C:/Users/stani/Desktop/opengl/test2/src/costume.h
+ C:/Users/stani/Desktop/opengl/test2/src/main.h
 

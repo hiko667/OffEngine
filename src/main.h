@@ -8,6 +8,8 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+//include self-defined header files
+// #include "costume.h"
 using namespace std;
 //definitions
 #define MATRIX_HEIGHT 1080

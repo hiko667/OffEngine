@@ -1,4 +1,4 @@
-#include<main.h>
+#include "main.h"
 
 // classes
 class Costume
@@ -76,6 +76,20 @@ class Sprite
 
 };
 
+class GameObject
+{
+    public:
+        Sprite sprite;
+        void SetPosition(int x, int y)
+        {
+            this->sprite.SetPosition(x, y);
+        }
+        void Move(PixelVector vec)
+        {
+            this->sprite.Move(vec);
+        }
+};
+
 class Window
 {
     public:
@@ -86,6 +100,7 @@ class Window
         static int Mouse_Y;
         static int View_Width, View_Height, View_X, View_Y;
         static Sprite amogus;
+
         Window(int height, int width, const char * name)
         {
             Window_Height = height;
