@@ -56,19 +56,32 @@ class Sprite
         int x,y;
         vector<Costume> costumes;
         int currentCostume;
-        Sprite(int initialX, int initialY, string firstCostumePath)
+        Sprite()
+        {
+            x = MATRIX_WIDTH/2;
+            y = MATRIX_HEIGHT/2;
+        }
+        Sprite(int initialX, int initialY)
         {
             x = initialX;
             y = initialY;
-            costumes.push_back(Costume(firstCostumePath));
-            currentCostume = 0;
         }
-        void Move(PixelVector vec)
+        void addCostume(string pathToCostume)
+        {
+            costumes.push_back(Costume(pathToCostume));
+            if (!this->currentCostume) currentCostume = 0;
+        }
+        void addCostume(Costume costume)
+        {
+            costumes.push_back(costume);
+            if (!this->currentCostume) currentCostume = 0;
+        }
+        void move(PixelVector vec)
         {
             this->x += vec.sX;
             this->y += vec.sY;
         }
-        void SetPosition(int x, int y)
+        void setPosition(int x, int y)
         {
             this->x = x;
             this->y = y;
@@ -80,14 +93,52 @@ class GameObject
 {
     public:
         Sprite sprite;
-        void SetPosition(int x, int y)
+        GameObject(vector<string> costumes)
         {
-            this->sprite.SetPosition(x, y);
+            sprite = Sprite(MATRIX_WIDTH/2, MATRIX_HEIGHT/2);
+            for(string costume : costumes)
+            {
+                sprite.addCostume(costume);
+            }
         }
-        void Move(PixelVector vec)
+        void setPosition(int x, int y)
         {
-            this->sprite.Move(vec);
+            this->sprite.setPosition(x, y);
         }
+        void move(PixelVector vec)
+        {
+            this->sprite.move(vec);
+        }
+        void addCostume(Costume costume)
+        {
+            this->sprite.addCostume(costume);
+        }
+        Sprite getSprite()
+        {
+            return this->sprite;
+        }
+};
+
+class Game
+{
+    vector<Costume> gameCostumes;
+    vector<GameObject> activeGameObjects;
+    vector<GameObject> inactiveGameObjects;
+    public:
+        Game()
+        {
+
+        }
+        vector<GameObject> getObjectsToRender()
+        {
+            return this->activeGameObjects;
+        }
+        void initializeObject(vector<string> costumes)
+        {
+            GameObject object = GameObject(costumes);
+        }
+        
+        
 };
 
 class Window
@@ -99,8 +150,7 @@ class Window
         static int Mouse_X;
         static int Mouse_Y;
         static int View_Width, View_Height, View_X, View_Y;
-        static Sprite amogus;
-
+        static Game game;
         Window(int height, int width, const char * name)
         {
             Window_Height = height;
@@ -156,19 +206,16 @@ class Window
                 //functions to clear background
                 glClearColor( 0, 0, 0, 1 );
                 glClear( GL_COLOR_BUFFER_BIT );
-                draw_frame();
+                drawFrame();
                 //here be all the graphic functions
-                draw_line(0, 0, Mouse_X, Mouse_Y, 255, 255, 0);
-                amogus.SetPosition(Mouse_X, Mouse_Y);
-                draw_sprite(amogus);
-
+                drawLine(0, 0, Mouse_X, Mouse_Y, 255, 255, 0);
+                
                 
                 T.time2 = T.time1;
                 glutSwapBuffers();
             }
             T.time1 = glutGet(GLUT_ELAPSED_TIME);
             glutPostRedisplay();
-            
         }
         static void mouse(int x, int y)
         {
@@ -189,7 +236,7 @@ class Window
             glVertex2i(x, y);
             glEnd();
         }
-        static void draw_frame()
+        static void drawFrame()
         {
             for (int x = 0; x <= MATRIX_WIDTH; x += 1) { 
                 pixel(x, 0);
@@ -200,7 +247,7 @@ class Window
                 pixel(MATRIX_WIDTH - 2, y);   
             }
         }
-        static void draw_line(int x1, int y1, int x2, int y2, int red, int green, int blue)
+        static void drawLine(int x1, int y1, int x2, int y2, int red, int green, int blue)
         {
             float dx = x2 - x1;
             float dy = y2 - y1;
@@ -222,7 +269,7 @@ class Window
                 y += yInc;
             }
         }
-        static void draw_sprite(Sprite sprite)
+        static void drawSprite(Sprite sprite)
         {
             for(RelativePoint point : sprite.costumes[sprite.currentCostume].points)
             {
@@ -230,6 +277,11 @@ class Window
                 int pixelY = sprite.y + point.shift.sY;
                 pixel(pixelX, pixelY, point.color.r, point.color.g, point.color.b);
             }
+        }
+        //rendering functions
+        static void renderSprites()
+        {
+
         }
 };
 
@@ -243,7 +295,6 @@ int Window::View_Height = 0;
 int Window::View_Width = 0;
 int Window::View_X = 0;
 int Window::View_Y = 0;
-Sprite Window::amogus = Sprite(500, 500, "amogus.png");
 
 int main(int argc, char* argv[])
 {
