@@ -162,7 +162,7 @@ class Game
                 }
                 else
                 {
-                    Costume costume = this->costumes.at(path);
+                    object.addCostume(this->costumes.at(path));
                 }
             }
             this->activeGameObjects.push_back(object);
@@ -200,6 +200,7 @@ class Window
         //initialization functions
         static void init()
         {
+            game.initializeObject({"amogus.png"});
             game.initializeObject({"amogus.png"});
         }
         //event functions
