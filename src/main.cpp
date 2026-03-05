@@ -79,13 +79,25 @@ class Sprite
         }
         void move(PixelVector vec)
         {
-            this->x += vec.sX;
-            this->y += vec.sY;
+            if(this->x + vec.sX > 0 && this->x + vec.sX < MATRIX_WIDTH)
+            {
+                this->x += vec.sX;
+            }
+            if(this->y + vec.sY > 0 && this->y + vec.sY < MATRIX_HEIGHT)
+            {
+                this->y += vec.sY;
+            }
         }
-        void setPosition(int x, int y)
+        void setPosition(Point point)
         {
-            this->x = x;
-            this->y = y;
+            if(point.x > 0 && point.x < MATRIX_WIDTH)
+            {
+                this->x = point.x;
+            }
+            if(point.y > 0 && point.y < MATRIX_HEIGHT)
+            {
+                this->y = point.y;
+            }
         }
 
 };
@@ -106,15 +118,6 @@ class GameObject
                 sprite.addCostume(costume);
             }
         }
-        
-        void setPosition(int x, int y)
-        {
-            this->sprite.setPosition(x, y);
-        }
-        void move(PixelVector vec)
-        {
-            this->sprite.move(vec);
-        }
         void addCostume(Costume costume)
         {
             this->sprite.addCostume(costume);
@@ -122,6 +125,14 @@ class GameObject
         void addCostume(string costume)
         {
             this->sprite.addCostume(costume);
+        }
+        void setPosition(Point point)
+        {
+            this->sprite.setPosition(point);
+        }
+        void move(PixelVector vec)
+        {
+            this->sprite.move(vec);
         }
         Sprite getSprite()
         {
@@ -132,8 +143,9 @@ class GameObject
 class Game
 {
     unordered_map<string, Costume> costumes;
-    vector<GameObject> activeGameObjects;
-    vector<GameObject> inactiveGameObjects;
+    unordered_map<string, GameObject> activeGameObjects;
+    unordered_map<string, GameObject> inactiveGameObjects;
+    
     public:
         Game()
         {
@@ -142,13 +154,13 @@ class Game
         vector<Sprite> getSpritesToRender()
         {
             vector<Sprite> sprites;
-            for (GameObject object : activeGameObjects)
+            for (auto object : activeGameObjects)
             {
-                sprites.push_back(object.getSprite());
+                sprites.push_back(object.second.getSprite());
             }
             return sprites;
         }
-        void initializeObject(vector<string> costumes)
+        void initializeObject(string name, vector<string> costumes)
         {
             GameObject object = GameObject();
             for(string path : costumes)
@@ -165,10 +177,22 @@ class Game
                     object.addCostume(this->costumes.at(path));
                 }
             }
-            this->activeGameObjects.push_back(object);
+            this->activeGameObjects.insert({name, object});
         }
-        
-        
+        void moveGameObject(string name, PixelVector vector)
+        {
+            if(!(this->activeGameObjects.find(name) == this->activeGameObjects.end()))
+            {
+                this->activeGameObjects.at(name).move(vector);
+            }
+        }
+        void setGameObjectPosition(string name, Point point)
+        {
+            if(!(this->activeGameObjects.find(name) == this->activeGameObjects.end()))
+            {
+                this->activeGameObjects.at(name).setPosition(point);
+            }
+        }
 };
 
 class Window
@@ -200,8 +224,8 @@ class Window
         //initialization functions
         static void init()
         {
-            game.initializeObject({"amogus.png"});
-            game.initializeObject({"amogus.png"});
+            game.initializeObject("amogus", {"amogus.png"});
+            
         }
         //event functions
         static void reshape(int width, int height) 
@@ -242,7 +266,7 @@ class Window
                 //here be all the graphic functions
                 drawLine(0, 0, Mouse_X, Mouse_Y, 255, 255, 0);
                 renderSprites();
-                
+                game.moveGameObject("amogus", (PixelVector){5, 0});
                 T.time2 = T.time1;
                 glutSwapBuffers();
             }
