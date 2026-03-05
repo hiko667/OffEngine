@@ -153,7 +153,7 @@ class Game
             GameObject object = GameObject();
             for(string path : costumes)
             {
-                if(!(this->costumes.find(path) == this->costumes.end()))
+                if(this->costumes.find(path) == this->costumes.end())
                 {
                     Costume costume = Costume(path);
                     this->costumes.insert({path, costume});
@@ -162,7 +162,7 @@ class Game
                 }
                 else
                 {
-                    Costume costume = this->costumes[path];
+                    Costume costume = this->costumes.at(path);
                 }
             }
             this->activeGameObjects.push_back(object);
