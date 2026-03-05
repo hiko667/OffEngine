@@ -49,4 +49,9 @@ struct Point
     int x;
     int y;
 };
+struct Hitbox
+{
+    vector<RelativePoint> corners;
+};
+
 #endif

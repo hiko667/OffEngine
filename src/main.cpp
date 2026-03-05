@@ -5,6 +5,7 @@ class Costume
 {
     public:
         vector<RelativePoint> points;
+        // Hitbox hitbox;
         Costume(string path)
         {
             int height, width, channels;
