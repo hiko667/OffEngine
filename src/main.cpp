@@ -94,15 +94,19 @@ class GameObject
 {
     public:
         Sprite sprite;
-        string id;
+        GameObject()
+        {
+            sprite = Sprite();
+        }
         GameObject(vector<string> costumes)
         {
-            sprite = Sprite(MATRIX_WIDTH/2, MATRIX_HEIGHT/2);
+            sprite = Sprite();
             for(string costume : costumes)
             {
                 sprite.addCostume(costume);
             }
         }
+        
         void setPosition(int x, int y)
         {
             this->sprite.setPosition(x, y);
@@ -115,6 +119,10 @@ class GameObject
         {
             this->sprite.addCostume(costume);
         }
+        void addCostume(string costume)
+        {
+            this->sprite.addCostume(costume);
+        }
         Sprite getSprite()
         {
             return this->sprite;
@@ -123,7 +131,7 @@ class GameObject
 
 class Game
 {
-    vector<Costume> gameCostumes;
+    unordered_map<string, Costume> costumes;
     vector<GameObject> activeGameObjects;
     vector<GameObject> inactiveGameObjects;
     public:
@@ -142,7 +150,21 @@ class Game
         }
         void initializeObject(vector<string> costumes)
         {
-            GameObject object = GameObject(costumes);
+            GameObject object = GameObject();
+            for(string path : costumes)
+            {
+                if(!(this->costumes.find(path) == this->costumes.end()))
+                {
+                    Costume costume = Costume(path);
+                    this->costumes.insert({path, costume});
+                    object.addCostume(costume);
+
+                }
+                else
+                {
+                    Costume costume = this->costumes[path];
+                }
+            }
             this->activeGameObjects.push_back(object);
         }
         

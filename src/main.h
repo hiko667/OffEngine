@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <unordered_map>
 //include self-defined header files
 // #include "costume.h"
 using namespace std;
