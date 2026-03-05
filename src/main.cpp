@@ -5,7 +5,7 @@ class Costume
 {
     public:
         vector<RelativePoint> points;
-        // Hitbox hitbox;
+        Hitbox hitbox;
         Costume(string path)
         {
             int height, width, channels;
@@ -47,6 +47,14 @@ class Costume
             point.shift.sX = x;
             point.shift.sY = y;
             points.push_back(point);
+        }
+        void addHitbox(Hitbox hitbox)
+        {
+            this->hitbox = hitbox;
+        }
+        void addHitbox(vector<RelativePoint> points)
+        {
+            Hitbox hitbox = (Hitbox){points};
         }
 
 };
@@ -110,14 +118,6 @@ class GameObject
         GameObject()
         {
             sprite = Sprite();
-        }
-        GameObject(vector<string> costumes)
-        {
-            sprite = Sprite();
-            for(string costume : costumes)
-            {
-                sprite.addCostume(costume);
-            }
         }
         void addCostume(Costume costume)
         {
@@ -194,6 +194,11 @@ class Game
                 this->activeGameObjects.at(name).setPosition(point);
             }
         }
+        //this function will notify observers (MF design pattern)
+        void notify(unsigned char key)
+        {
+            
+        }
 };
 
 class Window
@@ -217,6 +222,7 @@ class Window
             glutDisplayFunc(Window::display);
             glutPassiveMotionFunc(Window::mouse);
             glutReshapeFunc(Window::reshape);
+            glutKeyboardFunc(Window::keyboard);
             glutFullScreen();
             glutSetCursor(GLUT_CURSOR_NONE);
             init();
@@ -267,7 +273,7 @@ class Window
                 //here be all the graphic functions
                 drawLine(0, 0, Mouse_X, Mouse_Y, 255, 255, 0);
                 renderSprites();
-                game.moveGameObject("amogus", (PixelVector){5, 0});
+                // game.moveGameObject("amogus", (PixelVector){5, 0});
                 T.time2 = T.time1;
                 glutSwapBuffers();
             }
@@ -283,6 +289,10 @@ class Window
             if (Mouse_X < 0) Mouse_X = 0; if (Mouse_X > MATRIX_WIDTH) Mouse_X = MATRIX_WIDTH;
             if (Mouse_Y < 0) Mouse_Y = 0; if (Mouse_Y > MATRIX_HEIGHT) Mouse_Y = MATRIX_HEIGHT;
             // glutPostRedisplay(); //i dont know if we need ts
+        }
+        static void keyboard(unsigned char key, int x, int y)
+        {
+            Window::game.notify(key);
         }
         //drawing functions
         static void pixel(int x, int y, int red = 255, int green = 255, int blue = 255)
