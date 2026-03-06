@@ -1,5 +1,7 @@
 #include "main.h"
 
+
+
 // classes
 class Costume
 {
@@ -139,8 +141,17 @@ class GameObject
         {
             return this->sprite;
         }
+        Costume getCurrentCostume()
+        {
+            return this->sprite.costumes[this->sprite.currentCostume];
+        }
 };
-
+bool hitboxColide(GameObject object1, GameObject object2)
+{
+    Hitbox hitbox1 = object1.getCurrentCostume().hitbox;
+    Hitbox hitbox2 = object2.getCurrentCostume().hitbox;
+    return true;
+}
 class Game
 {
     unordered_map<string, Costume> costumes;
@@ -299,9 +310,9 @@ class Window
         }
         static void mouseButtons(int button, int state, int x, int y)
         {
-            if(button == GLUT_LEFT_BUTTON) Window::globalKeyState.mouseLeft == (state == GLUT_DOWN);
-            if(button == GLUT_RIGHT_BUTTON) Window::globalKeyState.mouseRight == (state == GLUT_DOWN);
-            if(button == GLUT_MIDDLE_BUTTON) Window::globalKeyState.mouseMiddle == (state == GLUT_DOWN);
+            if(button == GLUT_LEFT_BUTTON) Window::globalKeyState.mouseLeft = (state == GLUT_DOWN);
+            if(button == GLUT_RIGHT_BUTTON) Window::globalKeyState.mouseRight = (state == GLUT_DOWN);
+            if(button == GLUT_MIDDLE_BUTTON) Window::globalKeyState.mouseMiddle = (state == GLUT_DOWN);
         }
         static void keyboard(unsigned char key, int x, int y)
         {
