@@ -29,6 +29,7 @@ struct Time
 struct Key
 {
     bool w,a,s,d;
+    bool mouseLeft, mouseMiddle, mouseRight;
 };
 
 struct ColorRGB

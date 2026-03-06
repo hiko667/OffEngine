@@ -297,6 +297,12 @@ class Window
             if (Mouse_Y < 0) Mouse_Y = 0; if (Mouse_Y > MATRIX_HEIGHT) Mouse_Y = MATRIX_HEIGHT;
             // glutPostRedisplay(); //i dont know if we need ts
         }
+        static void mouseButtons(int button, int state, int x, int y)
+        {
+            if(button == GLUT_LEFT_BUTTON) Window::globalKeyState.mouseLeft == (state == GLUT_DOWN);
+            if(button == GLUT_RIGHT_BUTTON) Window::globalKeyState.mouseRight == (state == GLUT_DOWN);
+            if(button == GLUT_MIDDLE_BUTTON) Window::globalKeyState.mouseMiddle == (state == GLUT_DOWN);
+        }
         static void keyboard(unsigned char key, int x, int y)
         {
             
