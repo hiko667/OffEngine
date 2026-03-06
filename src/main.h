@@ -9,6 +9,8 @@
 #include <vector>
 #include <fstream>
 #include <unordered_map>
+#include <algorithm>
+#include <cmath>
 //include self-defined header files
 // #include "costume.h"
 using namespace std;
@@ -58,7 +60,10 @@ struct Point
 };
 struct Hitbox
 {
-    vector<RelativePoint> corners;
+    PixelVector topLeft;
+    PixelVector bottomLeft;
+    PixelVector topRight;
+    PixelVector bottomRight;
 };
 
 #endif

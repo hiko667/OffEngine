@@ -54,9 +54,11 @@ class Costume
         {
             this->hitbox = hitbox;
         }
-        void addHitbox(vector<RelativePoint> points)
+        void addHitbox(PixelVector topLeft, PixelVector bottomLeft, PixelVector topRight, PixelVector bottomRight)
         {
-            Hitbox hitbox = (Hitbox){points};
+
+            this->hitbox = (Hitbox){topLeft, bottomRight, topRight, bottomRight};
+
         }
 
 };
@@ -90,25 +92,13 @@ class Sprite
         }
         void move(PixelVector vec)
         {
-            if(this->x + vec.sX > 0 && this->x + vec.sX < MATRIX_WIDTH)
-            {
-                this->x += vec.sX;
-            }
-            if(this->y + vec.sY > 0 && this->y + vec.sY < MATRIX_HEIGHT)
-            {
-                this->y += vec.sY;
-            }
+            this->x += vec.sX;
+            this->y += vec.sY;
         }
         void setPosition(Point point)
         {
-            if(point.x > 0 && point.x < MATRIX_WIDTH)
-            {
-                this->x = point.x;
-            }
-            if(point.y > 0 && point.y < MATRIX_HEIGHT)
-            {
-                this->y = point.y;
-            }
+            this->x = point.x;
+            this->y = point.y;
         }
 
 };
@@ -152,6 +142,7 @@ bool hitboxColide(GameObject object1, GameObject object2)
     Hitbox hitbox2 = object2.getCurrentCostume().hitbox;
     return true;
 }
+
 class Game
 {
     unordered_map<string, Costume> costumes;
@@ -182,7 +173,6 @@ class Game
                     Costume costume = Costume(path);
                     this->costumes.insert({path, costume});
                     object.addCostume(costume);
-
                 }
                 else
                 {
@@ -191,11 +181,11 @@ class Game
             }
             this->activeGameObjects.insert({name, object});
         }
-        void moveGameObject(string name, PixelVector vector)
+        void moveGameObject(string name, PixelVector vec)
         {
             if(!(this->activeGameObjects.find(name) == this->activeGameObjects.end()))
             {
-                this->activeGameObjects.at(name).move(vector);
+                this->activeGameObjects.at(name).move(vec);
             }
         }
         void setGameObjectPosition(string name, Point point)
@@ -212,7 +202,6 @@ class Game
             if(state.a) this->moveGameObject("amogus", PixelVector {-10, 0});
             if(state.s) this->moveGameObject("amogus", PixelVector {0, -10});
             if(state.d) this->moveGameObject("amogus", PixelVector {10, 0});
-
         }
 };
 
@@ -240,16 +229,15 @@ class Window
             glutReshapeFunc(Window::reshape);
             glutKeyboardFunc(Window::keyboard);
             glutKeyboardUpFunc(Window::keyboardUp);
+            init();
             glutFullScreen();
             glutSetCursor(GLUT_CURSOR_NONE);
-            init();
             glutMainLoop();
         }
         //initialization functions
         static void init()
         {
             game.initializeObject("amogus", {"amogus.png"});
-            
         }
         //event functions
         static void reshape(int width, int height) 
@@ -287,9 +275,9 @@ class Window
                 glClearColor( 0, 0, 0, 1 );
                 glClear( GL_COLOR_BUFFER_BIT );
                 drawFrame();
-                //here be all the graphic functions
-                drawLine(0, 0, Mouse_X, Mouse_Y, 255, 255, 0);
+                //passing global keyboard and mouse state to the game function
                 game.notify(Window::globalKeyState);
+                //rendering sprites
                 renderSprites();
                 // game.moveGameObject("amogus", (PixelVector){5, 0});
                 T.time2 = T.time1;
