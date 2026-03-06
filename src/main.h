@@ -25,6 +25,12 @@ struct Time
     int time1, time2;
 }; struct Time T;
 
+//to add handling of more keys just add them here
+struct Key
+{
+    bool w,a,s,d;
+};
+
 struct ColorRGB
 {
     int r;

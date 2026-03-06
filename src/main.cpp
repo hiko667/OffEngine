@@ -195,9 +195,13 @@ class Game
             }
         }
         //this function will notify observers (MF design pattern)
-        void notify(unsigned char key)
+        void notify(Key state)
         {
-            
+            if(state.w) this->moveGameObject("amogus", PixelVector {0, 10});
+            if(state.a) this->moveGameObject("amogus", PixelVector {-10, 0});
+            if(state.s) this->moveGameObject("amogus", PixelVector {0, -10});
+            if(state.d) this->moveGameObject("amogus", PixelVector {10, 0});
+
         }
 };
 
@@ -211,6 +215,7 @@ class Window
         static int Mouse_Y;
         static int View_Width, View_Height, View_X, View_Y;
         static Game game;
+        static Key globalKeyState;
         Window(int height, int width, const char * name)
         {
             Window_Height = height;
@@ -223,6 +228,7 @@ class Window
             glutPassiveMotionFunc(Window::mouse);
             glutReshapeFunc(Window::reshape);
             glutKeyboardFunc(Window::keyboard);
+            glutKeyboardUpFunc(Window::keyboardUp);
             glutFullScreen();
             glutSetCursor(GLUT_CURSOR_NONE);
             init();
@@ -272,6 +278,7 @@ class Window
                 drawFrame();
                 //here be all the graphic functions
                 drawLine(0, 0, Mouse_X, Mouse_Y, 255, 255, 0);
+                game.notify(Window::globalKeyState);
                 renderSprites();
                 // game.moveGameObject("amogus", (PixelVector){5, 0});
                 T.time2 = T.time1;
@@ -292,7 +299,18 @@ class Window
         }
         static void keyboard(unsigned char key, int x, int y)
         {
-            Window::game.notify(key);
+            
+            if(key == 'w') Window::globalKeyState.w = true;
+            if(key=='a') Window::globalKeyState.a = true;
+            if(key=='s') Window::globalKeyState.s = true;
+            if(key=='d') Window::globalKeyState.d = true;
+        }
+        static void keyboardUp(unsigned char key, int x, int y)
+        {
+            if(key == 'w') Window::globalKeyState.w = false;
+            if(key=='a') Window::globalKeyState.a = false;
+            if(key=='s') Window::globalKeyState.s = false;
+            if(key=='d') Window::globalKeyState.d = false;
         }
         //drawing functions
         static void pixel(int x, int y, int red = 255, int green = 255, int blue = 255)
@@ -366,6 +384,7 @@ int Window::View_Width = 0;
 int Window::View_X = 0;
 int Window::View_Y = 0;
 Game Window::game = Game();
+Key Window::globalKeyState = (Key){false, false, false, false};
 
 int main(int argc, char* argv[])
 {
