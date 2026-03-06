@@ -66,4 +66,9 @@ struct Hitbox
     PixelVector bottomRight;
 };
 
+struct Projection {
+    long long min;
+    long long max;
+};
+
 #endif
