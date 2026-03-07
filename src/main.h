@@ -61,9 +61,9 @@ struct Point
 struct Hitbox
 {
     PixelVector topLeft;
-    PixelVector bottomLeft;
     PixelVector topRight;
     PixelVector bottomRight;
+    PixelVector bottomLeft;
 };
 
 struct Projection {

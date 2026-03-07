@@ -1,6 +1,9 @@
 #include "main.h"
 
-
+PixelVector reversePixelVector(PixelVector vec)
+{
+    return (PixelVector){-(vec.sX), -(vec.sY)};
+}
 
 // classes
 class Costume
@@ -54,10 +57,10 @@ class Costume
         {
             this->hitbox = hitbox;
         }
-        void addHitbox(PixelVector topLeft, PixelVector bottomLeft, PixelVector topRight, PixelVector bottomRight)
+        void addHitbox(PixelVector topLeft, PixelVector topRight, PixelVector bottomRight, PixelVector bottomLeft)
         {
 
-            this->hitbox = (Hitbox){topLeft, bottomRight, topRight, bottomRight};
+            this->hitbox = (Hitbox){topLeft, topRight, bottomRight, bottomLeft};
 
         }
 
@@ -155,26 +158,35 @@ Point getPointFromVector(Sprite sprite, PixelVector vec)
 
 bool hitboxColide(GameObject object1, GameObject object2)
 {
-    Hitbox hitbox1 = object1.getCurrentCostume().hitbox;
-    Hitbox hitbox2 = object2.getCurrentCostume().hitbox;
-    Point hitboxPoints1[4] = {getPointFromVector(object1.getSprite(), hitbox1.topLeft), getPointFromVector(object1.getSprite(), hitbox1.topRight)
-                            ,getPointFromVector(object1.getSprite(), hitbox1.bottomRight), getPointFromVector(object1.getSprite(), hitbox1.bottomLeft)};
-    Point hitboxPoints2[4] = {getPointFromVector(object1.getSprite(), hitbox2.topLeft), getPointFromVector(object2.getSprite(), hitbox2.topRight)
-                            ,getPointFromVector(object2.getSprite(), hitbox2.bottomRight), getPointFromVector(object2.getSprite(), hitbox2.bottomLeft)};
-    Point* hitboxes[2] = {hitboxPoints1, hitboxPoints2};
-    for(int s = 0; s<2; s++)
+    Hitbox h1 = object1.getCurrentCostume().hitbox;
+    Hitbox h2 = object2.getCurrentCostume().hitbox;
+
+    Point pts1[4] = {
+        getPointFromVector(object1.getSprite(), h1.topLeft),
+        getPointFromVector(object1.getSprite(), h1.topRight),
+        getPointFromVector(object1.getSprite(), h1.bottomRight),
+        getPointFromVector(object1.getSprite(), h1.bottomLeft)
+    };
+    Point pts2[4] = {
+        getPointFromVector(object2.getSprite(), h2.topLeft),
+        getPointFromVector(object2.getSprite(), h2.topRight),
+        getPointFromVector(object2.getSprite(), h2.bottomRight),
+        getPointFromVector(object2.getSprite(), h2.bottomLeft)
+    };
+
+    Point* shapes[2] = {pts1, pts2};
+
+    for (int s = 0; s < 2; s++) 
     {
-        Point * currentHitbox = hitboxes[s];
-        for(int i = 0; i<2; i++)
+        for (int i = 0; i < 4; i++) 
         {
-            Point p1 = currentHitbox[i];
-            Point p2 = currentHitbox[i+1];
+            Point p1 = shapes[s][i];
+            Point p2 = shapes[s][(i + 1) % 4];
             int axisX = -(p2.y - p1.y);
             int axisY = (p2.x - p1.x);
-            Projection res1 = projectPolygon(hitboxPoints1, axisX, axisY);
-            Projection res2 = projectPolygon(hitboxPoints2, axisX, axisY);
-            if (res1.max < res2.min || res2.max < res1.min) 
-            {
+            Projection res1 = projectPolygon(pts1, axisX, axisY);
+            Projection res2 = projectPolygon(pts2, axisX, axisY);
+            if (res1.max < res2.min || res2.max < res1.min) {
                 return false; 
             }
         }
@@ -210,7 +222,9 @@ class Game
                 if(this->costumes.find(path) == this->costumes.end())
                 {
                     Costume costume = Costume(path);
+                    costume.addHitbox((Hitbox){(PixelVector){-20, 20}, (PixelVector){20, 20}, (PixelVector){20, -20}, (PixelVector){-20, -20}});
                     this->costumes.insert({path, costume});
+                    
                     object.addCostume(costume);
                 }
                 else
@@ -225,6 +239,16 @@ class Game
             if(!(this->activeGameObjects.find(name) == this->activeGameObjects.end()))
             {
                 this->activeGameObjects.at(name).move(vec);
+                if(hitboxColide(this->activeGameObjects.at(name), this->activeGameObjects.at("sus")))
+                {
+
+                    this->activeGameObjects.at(name).move(reversePixelVector(vec));
+                    cout<<"Kolizja"<<endl;
+                }
+                else
+                {
+                    cout<<"Brak kolizji"<<endl;
+                }
             }
         }
         void setGameObjectPosition(string name, Point point)
@@ -234,7 +258,6 @@ class Game
                 this->activeGameObjects.at(name).setPosition(point);
             }
         }
-        //this function will notify observers (MF design pattern)
         void notify(Key state)
         {
             if(state.w) this->moveGameObject("amogus", PixelVector {0, 10});
@@ -277,6 +300,10 @@ class Window
         static void init()
         {
             game.initializeObject("amogus", {"amogus.png"});
+            
+            game.initializeObject("sus", {"amogus.png"});
+
+            game.setGameObjectPosition("sus", (Point){100, 200});
         }
         //event functions
         static void reshape(int width, int height) 
