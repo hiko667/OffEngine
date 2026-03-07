@@ -22,8 +22,10 @@ CMakeFiles/off_yourself.dir/src/main.cpp.obj: C:/Users/stani/Desktop/opengl/test
   C:/msys64/ucrt64/include/basetsd.h \
   C:/msys64/ucrt64/include/bcrypt.h \
   C:/msys64/ucrt64/include/bemapiset.h \
+  C:/msys64/ucrt64/include/c++/15.2.0/algorithm \
   C:/msys64/ucrt64/include/c++/15.2.0/backward/binders.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bit \
+  C:/msys64/ucrt64/include/c++/15.2.0/bits/algorithmfwd.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/alloc_traits.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/allocator.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/basic_ios.h \
@@ -73,20 +75,24 @@ CMakeFiles/off_yourself.dir/src/main.cpp.obj: C:/Users/stani/Desktop/opengl/test
   C:/msys64/ucrt64/include/c++/15.2.0/bits/requires_hosted.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/specfun.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/std_abs.h \
+  C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_algo.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_algobase.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_bvector.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_construct.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_function.h \
+  C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_heap.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_iterator.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_iterator_base_funcs.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_iterator_base_types.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_pair.h \
+  C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_tempbuf.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_uninitialized.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_vector.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/streambuf.tcc \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/streambuf_iterator.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/string_view.tcc \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/15.2.0/bits/uniform_int_dist.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/unordered_map.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/uses_allocator.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/uses_allocator_args.h \
@@ -122,6 +128,8 @@ CMakeFiles/off_yourself.dir/src/main.cpp.obj: C:/Users/stani/Desktop/opengl/test
   C:/msys64/ucrt64/include/c++/15.2.0/math.h \
   C:/msys64/ucrt64/include/c++/15.2.0/new \
   C:/msys64/ucrt64/include/c++/15.2.0/ostream \
+  C:/msys64/ucrt64/include/c++/15.2.0/pstl/execution_defs.h \
+  C:/msys64/ucrt64/include/c++/15.2.0/pstl/glue_algorithm_defs.h \
   C:/msys64/ucrt64/include/c++/15.2.0/pstl/pstl_config.h \
   C:/msys64/ucrt64/include/c++/15.2.0/stdexcept \
   C:/msys64/ucrt64/include/c++/15.2.0/stdlib.h \
@@ -595,6 +603,12 @@ C:/msys64/ucrt64/include/sec_api/wchar_s.h:
 
 C:/msys64/ucrt64/include/bcrypt.h:
 
+C:/msys64/ucrt64/include/c++/15.2.0/bits/functional_hash.h:
+
+C:/msys64/ucrt64/include/c++/15.2.0/algorithm:
+
+C:/msys64/ucrt64/include/c++/15.2.0/bits/algorithmfwd.h:
+
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx10_2-512minmaxintrin.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/alloc_traits.h:
@@ -644,8 +658,6 @@ C:/msys64/ucrt64/include/c++/15.2.0/bits/exception_defines.h:
 C:/msys64/ucrt64/include/c++/15.2.0/bits/enable_special_members.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/node_handle.h:
-
-C:/msys64/ucrt64/include/c++/15.2.0/bits/functional_hash.h:
 
 C:/msys64/ucrt64/include/fltwinerror.h:
 
@@ -713,6 +725,10 @@ C:/msys64/ucrt64/include/c++/15.2.0/tr1/bessel_function.tcc:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/std_abs.h:
 
+C:/msys64/ucrt64/include/winbase.h:
+
+C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_algo.h:
+
 C:/msys64/ucrt64/include/errhandlingapi.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_algobase.h:
@@ -731,6 +747,8 @@ C:/msys64/ucrt64/include/c++/15.2.0/debug/assertions.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_function.h:
 
+C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_heap.h:
+
 C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_iterator.h:
 
 C:/msys64/ucrt64/include/wnnc.h:
@@ -743,6 +761,10 @@ C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_iterator_base_types.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_pair.h:
 
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/f16cintrin.h:
+
+C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_tempbuf.h:
+
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/prfchiintrin.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_uninitialized.h:
@@ -752,6 +774,10 @@ C:/msys64/ucrt64/include/c++/15.2.0/bits/streambuf_iterator.h:
 C:/msys64/ucrt64/include/c++/15.2.0/bits/string_view.tcc:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/stringfwd.h:
+
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512bwintrin.h:
+
+C:/msys64/ucrt64/include/c++/15.2.0/bits/uniform_int_dist.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/uses_allocator.h:
 
@@ -835,6 +861,14 @@ C:/msys64/ucrt64/include/winnetwk.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/new:
 
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/xsaveintrin.h:
+
+C:/msys64/ucrt64/include/c++/15.2.0/x86_64-w64-mingw32/bits/error_constants.h:
+
+C:/msys64/ucrt64/include/c++/15.2.0/pstl/execution_defs.h:
+
+C:/msys64/ucrt64/include/c++/15.2.0/pstl/glue_algorithm_defs.h:
+
 C:/msys64/ucrt64/include/wincontypes.h:
 
 C:/msys64/ucrt64/include/nb30.h:
@@ -908,10 +942,6 @@ C:/msys64/ucrt64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++locale.h:
 C:/msys64/ucrt64/include/c++/15.2.0/x86_64-w64-mingw32/bits/cpu_defines.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/x86_64-w64-mingw32/bits/ctype_inline.h:
-
-C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/xsaveintrin.h:
-
-C:/msys64/ucrt64/include/c++/15.2.0/x86_64-w64-mingw32/bits/error_constants.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/sm4intrin.h:
 
@@ -1201,8 +1231,6 @@ C:/msys64/ucrt64/include/wchar.h:
 
 C:/msys64/ucrt64/include/winapifamily.h:
 
-C:/msys64/ucrt64/include/winbase.h:
-
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/amxtileintrin.h:
 
 C:/msys64/ucrt64/include/windef.h:
@@ -1271,8 +1299,6 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512bitalgintrin.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512bitalgvlintrin.h:
 
-C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512bwintrin.h:
-
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512fintrin.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512fp16vlintrin.h:
@@ -1294,8 +1320,6 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avxvnniint16intrin.h:
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/bmiintrin.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/clzerointrin.h:
-
-C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/f16cintrin.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/fma4intrin.h:
 

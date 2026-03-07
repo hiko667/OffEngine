@@ -239,16 +239,6 @@ class Game
             if(!(this->activeGameObjects.find(name) == this->activeGameObjects.end()))
             {
                 this->activeGameObjects.at(name).move(vec);
-                if(hitboxColide(this->activeGameObjects.at(name), this->activeGameObjects.at("sus")))
-                {
-
-                    this->activeGameObjects.at(name).move(reversePixelVector(vec));
-                    cout<<"Kolizja"<<endl;
-                }
-                else
-                {
-                    cout<<"Brak kolizji"<<endl;
-                }
             }
         }
         void setGameObjectPosition(string name, Point point)
@@ -296,7 +286,7 @@ class Window
             glutSetCursor(GLUT_CURSOR_NONE);
             glutMainLoop();
         }
-        //initialization functions
+        //initialization functions. It will read files in the future, than forward them to the game
         static void init()
         {
             game.initializeObject("amogus", {"amogus.png"});
@@ -341,9 +331,9 @@ class Window
                 glClearColor( 0, 0, 0, 1 );
                 glClear( GL_COLOR_BUFFER_BIT );
                 drawFrame();
-                //passing global keyboard and mouse state to the game function
+                
                 game.notify(Window::globalKeyState);
-                //rendering sprites
+
                 renderSprites();
                 // game.moveGameObject("amogus", (PixelVector){5, 0});
                 T.time2 = T.time1;
