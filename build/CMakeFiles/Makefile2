@@ -84,12 +84,12 @@ clean: CMakeFiles/off_yourself.dir/clean
 CMakeFiles/off_yourself.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\stani\Desktop\opengl\test2\build\CMakeFiles --progress-num=1,2 "Built target off_yourself"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\stani\Desktop\opengl\test2\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target off_yourself"
 .PHONY : CMakeFiles/off_yourself.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/off_yourself.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\stani\Desktop\opengl\test2\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\stani\Desktop\opengl\test2\build\CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/off_yourself.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\stani\Desktop\opengl\test2\build\CMakeFiles 0
 .PHONY : CMakeFiles/off_yourself.dir/rule
@@ -101,7 +101,7 @@ off_yourself: CMakeFiles/off_yourself.dir/rule
 # codegen rule for target.
 CMakeFiles/off_yourself.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\stani\Desktop\opengl\test2\build\CMakeFiles --progress-num=1,2 "Finished codegen for target off_yourself"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\stani\Desktop\opengl\test2\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Finished codegen for target off_yourself"
 .PHONY : CMakeFiles/off_yourself.dir/codegen
 
 # clean rule for target.

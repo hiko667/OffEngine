@@ -135,6 +135,102 @@ off_yourself/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/build
 .PHONY : off_yourself/fast
 
+src/costume.obj: src/costume.cpp.obj
+.PHONY : src/costume.obj
+
+# target to build an object file
+src/costume.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/costume.cpp.obj
+.PHONY : src/costume.cpp.obj
+
+src/costume.i: src/costume.cpp.i
+.PHONY : src/costume.i
+
+# target to preprocess a source file
+src/costume.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/costume.cpp.i
+.PHONY : src/costume.cpp.i
+
+src/costume.s: src/costume.cpp.s
+.PHONY : src/costume.s
+
+# target to generate assembly for a file
+src/costume.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/costume.cpp.s
+.PHONY : src/costume.cpp.s
+
+src/functions.obj: src/functions.cpp.obj
+.PHONY : src/functions.obj
+
+# target to build an object file
+src/functions.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/functions.cpp.obj
+.PHONY : src/functions.cpp.obj
+
+src/functions.i: src/functions.cpp.i
+.PHONY : src/functions.i
+
+# target to preprocess a source file
+src/functions.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/functions.cpp.i
+.PHONY : src/functions.cpp.i
+
+src/functions.s: src/functions.cpp.s
+.PHONY : src/functions.s
+
+# target to generate assembly for a file
+src/functions.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/functions.cpp.s
+.PHONY : src/functions.cpp.s
+
+src/game.obj: src/game.cpp.obj
+.PHONY : src/game.obj
+
+# target to build an object file
+src/game.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/game.cpp.obj
+.PHONY : src/game.cpp.obj
+
+src/game.i: src/game.cpp.i
+.PHONY : src/game.i
+
+# target to preprocess a source file
+src/game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/game.cpp.i
+.PHONY : src/game.cpp.i
+
+src/game.s: src/game.cpp.s
+.PHONY : src/game.s
+
+# target to generate assembly for a file
+src/game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/game.cpp.s
+.PHONY : src/game.cpp.s
+
+src/gameObject.obj: src/gameObject.cpp.obj
+.PHONY : src/gameObject.obj
+
+# target to build an object file
+src/gameObject.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/gameObject.cpp.obj
+.PHONY : src/gameObject.cpp.obj
+
+src/gameObject.i: src/gameObject.cpp.i
+.PHONY : src/gameObject.i
+
+# target to preprocess a source file
+src/gameObject.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/gameObject.cpp.i
+.PHONY : src/gameObject.cpp.i
+
+src/gameObject.s: src/gameObject.cpp.s
+.PHONY : src/gameObject.s
+
+# target to generate assembly for a file
+src/gameObject.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/gameObject.cpp.s
+.PHONY : src/gameObject.cpp.s
+
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -159,6 +255,54 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/sprite.obj: src/sprite.cpp.obj
+.PHONY : src/sprite.obj
+
+# target to build an object file
+src/sprite.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/sprite.cpp.obj
+.PHONY : src/sprite.cpp.obj
+
+src/sprite.i: src/sprite.cpp.i
+.PHONY : src/sprite.i
+
+# target to preprocess a source file
+src/sprite.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/sprite.cpp.i
+.PHONY : src/sprite.cpp.i
+
+src/sprite.s: src/sprite.cpp.s
+.PHONY : src/sprite.s
+
+# target to generate assembly for a file
+src/sprite.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/sprite.cpp.s
+.PHONY : src/sprite.cpp.s
+
+src/window.obj: src/window.cpp.obj
+.PHONY : src/window.obj
+
+# target to build an object file
+src/window.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/window.cpp.obj
+.PHONY : src/window.cpp.obj
+
+src/window.i: src/window.cpp.i
+.PHONY : src/window.i
+
+# target to preprocess a source file
+src/window.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/window.cpp.i
+.PHONY : src/window.cpp.i
+
+src/window.s: src/window.cpp.s
+.PHONY : src/window.s
+
+# target to generate assembly for a file
+src/window.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\off_yourself.dir\build.make CMakeFiles/off_yourself.dir/src/window.cpp.s
+.PHONY : src/window.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -169,9 +313,27 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... off_yourself
+	@echo ... src/costume.obj
+	@echo ... src/costume.i
+	@echo ... src/costume.s
+	@echo ... src/functions.obj
+	@echo ... src/functions.i
+	@echo ... src/functions.s
+	@echo ... src/game.obj
+	@echo ... src/game.i
+	@echo ... src/game.s
+	@echo ... src/gameObject.obj
+	@echo ... src/gameObject.i
+	@echo ... src/gameObject.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/sprite.obj
+	@echo ... src/sprite.i
+	@echo ... src/sprite.s
+	@echo ... src/window.obj
+	@echo ... src/window.i
+	@echo ... src/window.s
 .PHONY : help
 
 

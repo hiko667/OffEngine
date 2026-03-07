@@ -1,31 +1,8 @@
-#ifndef MAIN_H
-#define MAIN_H
-#define STB_IMAGE_IMPLEMENTATION
-//includes
-#include <STB/stb_image.h>
-#include <GL/gl.h>
-#include <GL/glut.h>
-#include <iostream>
-#include <vector>
-#include <fstream>
-#include <unordered_map>
-#include <algorithm>
-#include <cmath>
-//include self-defined header files
-// #include "costume.h"
-using namespace std;
-//definitions
-#define MATRIX_HEIGHT 1080
-#define MATRIX_WIDTH 1920
-#define POINT_SIZE 10.0f
-#define FRAMES_PER_SECOND 30
-#define MILISECONDS_PER_FRAME 1000/FRAMES_PER_SECOND
-
-//structs
+#pragma once
 struct Time
 {
     int time1, time2;
-}; struct Time T;
+};
 
 //to add handling of more keys just add them here
 struct Key
@@ -70,5 +47,3 @@ struct Projection {
     long long min;
     long long max;
 };
-
-#endif

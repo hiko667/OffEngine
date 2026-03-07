@@ -86,19 +86,121 @@ CMakeFiles/off_yourself.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/off_yourself.dir/src/main.cpp.s"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\stani\Desktop\opengl\test2\src\main.cpp -o CMakeFiles\off_yourself.dir\src\main.cpp.s
 
+CMakeFiles/off_yourself.dir/src/costume.cpp.obj: CMakeFiles/off_yourself.dir/flags.make
+CMakeFiles/off_yourself.dir/src/costume.cpp.obj: CMakeFiles/off_yourself.dir/includes_CXX.rsp
+CMakeFiles/off_yourself.dir/src/costume.cpp.obj: C:/Users/stani/Desktop/opengl/test2/src/costume.cpp
+CMakeFiles/off_yourself.dir/src/costume.cpp.obj: CMakeFiles/off_yourself.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\stani\Desktop\opengl\test2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/off_yourself.dir/src/costume.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/off_yourself.dir/src/costume.cpp.obj -MF CMakeFiles\off_yourself.dir\src\costume.cpp.obj.d -o CMakeFiles\off_yourself.dir\src\costume.cpp.obj -c C:\Users\stani\Desktop\opengl\test2\src\costume.cpp
+
+CMakeFiles/off_yourself.dir/src/costume.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/off_yourself.dir/src/costume.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\stani\Desktop\opengl\test2\src\costume.cpp > CMakeFiles\off_yourself.dir\src\costume.cpp.i
+
+CMakeFiles/off_yourself.dir/src/costume.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/off_yourself.dir/src/costume.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\stani\Desktop\opengl\test2\src\costume.cpp -o CMakeFiles\off_yourself.dir\src\costume.cpp.s
+
+CMakeFiles/off_yourself.dir/src/functions.cpp.obj: CMakeFiles/off_yourself.dir/flags.make
+CMakeFiles/off_yourself.dir/src/functions.cpp.obj: CMakeFiles/off_yourself.dir/includes_CXX.rsp
+CMakeFiles/off_yourself.dir/src/functions.cpp.obj: C:/Users/stani/Desktop/opengl/test2/src/functions.cpp
+CMakeFiles/off_yourself.dir/src/functions.cpp.obj: CMakeFiles/off_yourself.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\stani\Desktop\opengl\test2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/off_yourself.dir/src/functions.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/off_yourself.dir/src/functions.cpp.obj -MF CMakeFiles\off_yourself.dir\src\functions.cpp.obj.d -o CMakeFiles\off_yourself.dir\src\functions.cpp.obj -c C:\Users\stani\Desktop\opengl\test2\src\functions.cpp
+
+CMakeFiles/off_yourself.dir/src/functions.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/off_yourself.dir/src/functions.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\stani\Desktop\opengl\test2\src\functions.cpp > CMakeFiles\off_yourself.dir\src\functions.cpp.i
+
+CMakeFiles/off_yourself.dir/src/functions.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/off_yourself.dir/src/functions.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\stani\Desktop\opengl\test2\src\functions.cpp -o CMakeFiles\off_yourself.dir\src\functions.cpp.s
+
+CMakeFiles/off_yourself.dir/src/game.cpp.obj: CMakeFiles/off_yourself.dir/flags.make
+CMakeFiles/off_yourself.dir/src/game.cpp.obj: CMakeFiles/off_yourself.dir/includes_CXX.rsp
+CMakeFiles/off_yourself.dir/src/game.cpp.obj: C:/Users/stani/Desktop/opengl/test2/src/game.cpp
+CMakeFiles/off_yourself.dir/src/game.cpp.obj: CMakeFiles/off_yourself.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\stani\Desktop\opengl\test2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/off_yourself.dir/src/game.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/off_yourself.dir/src/game.cpp.obj -MF CMakeFiles\off_yourself.dir\src\game.cpp.obj.d -o CMakeFiles\off_yourself.dir\src\game.cpp.obj -c C:\Users\stani\Desktop\opengl\test2\src\game.cpp
+
+CMakeFiles/off_yourself.dir/src/game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/off_yourself.dir/src/game.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\stani\Desktop\opengl\test2\src\game.cpp > CMakeFiles\off_yourself.dir\src\game.cpp.i
+
+CMakeFiles/off_yourself.dir/src/game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/off_yourself.dir/src/game.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\stani\Desktop\opengl\test2\src\game.cpp -o CMakeFiles\off_yourself.dir\src\game.cpp.s
+
+CMakeFiles/off_yourself.dir/src/gameObject.cpp.obj: CMakeFiles/off_yourself.dir/flags.make
+CMakeFiles/off_yourself.dir/src/gameObject.cpp.obj: CMakeFiles/off_yourself.dir/includes_CXX.rsp
+CMakeFiles/off_yourself.dir/src/gameObject.cpp.obj: C:/Users/stani/Desktop/opengl/test2/src/gameObject.cpp
+CMakeFiles/off_yourself.dir/src/gameObject.cpp.obj: CMakeFiles/off_yourself.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\stani\Desktop\opengl\test2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/off_yourself.dir/src/gameObject.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/off_yourself.dir/src/gameObject.cpp.obj -MF CMakeFiles\off_yourself.dir\src\gameObject.cpp.obj.d -o CMakeFiles\off_yourself.dir\src\gameObject.cpp.obj -c C:\Users\stani\Desktop\opengl\test2\src\gameObject.cpp
+
+CMakeFiles/off_yourself.dir/src/gameObject.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/off_yourself.dir/src/gameObject.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\stani\Desktop\opengl\test2\src\gameObject.cpp > CMakeFiles\off_yourself.dir\src\gameObject.cpp.i
+
+CMakeFiles/off_yourself.dir/src/gameObject.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/off_yourself.dir/src/gameObject.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\stani\Desktop\opengl\test2\src\gameObject.cpp -o CMakeFiles\off_yourself.dir\src\gameObject.cpp.s
+
+CMakeFiles/off_yourself.dir/src/sprite.cpp.obj: CMakeFiles/off_yourself.dir/flags.make
+CMakeFiles/off_yourself.dir/src/sprite.cpp.obj: CMakeFiles/off_yourself.dir/includes_CXX.rsp
+CMakeFiles/off_yourself.dir/src/sprite.cpp.obj: C:/Users/stani/Desktop/opengl/test2/src/sprite.cpp
+CMakeFiles/off_yourself.dir/src/sprite.cpp.obj: CMakeFiles/off_yourself.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\stani\Desktop\opengl\test2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/off_yourself.dir/src/sprite.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/off_yourself.dir/src/sprite.cpp.obj -MF CMakeFiles\off_yourself.dir\src\sprite.cpp.obj.d -o CMakeFiles\off_yourself.dir\src\sprite.cpp.obj -c C:\Users\stani\Desktop\opengl\test2\src\sprite.cpp
+
+CMakeFiles/off_yourself.dir/src/sprite.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/off_yourself.dir/src/sprite.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\stani\Desktop\opengl\test2\src\sprite.cpp > CMakeFiles\off_yourself.dir\src\sprite.cpp.i
+
+CMakeFiles/off_yourself.dir/src/sprite.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/off_yourself.dir/src/sprite.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\stani\Desktop\opengl\test2\src\sprite.cpp -o CMakeFiles\off_yourself.dir\src\sprite.cpp.s
+
+CMakeFiles/off_yourself.dir/src/window.cpp.obj: CMakeFiles/off_yourself.dir/flags.make
+CMakeFiles/off_yourself.dir/src/window.cpp.obj: CMakeFiles/off_yourself.dir/includes_CXX.rsp
+CMakeFiles/off_yourself.dir/src/window.cpp.obj: C:/Users/stani/Desktop/opengl/test2/src/window.cpp
+CMakeFiles/off_yourself.dir/src/window.cpp.obj: CMakeFiles/off_yourself.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\stani\Desktop\opengl\test2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/off_yourself.dir/src/window.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/off_yourself.dir/src/window.cpp.obj -MF CMakeFiles\off_yourself.dir\src\window.cpp.obj.d -o CMakeFiles\off_yourself.dir\src\window.cpp.obj -c C:\Users\stani\Desktop\opengl\test2\src\window.cpp
+
+CMakeFiles/off_yourself.dir/src/window.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/off_yourself.dir/src/window.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\stani\Desktop\opengl\test2\src\window.cpp > CMakeFiles\off_yourself.dir\src\window.cpp.i
+
+CMakeFiles/off_yourself.dir/src/window.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/off_yourself.dir/src/window.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\stani\Desktop\opengl\test2\src\window.cpp -o CMakeFiles\off_yourself.dir\src\window.cpp.s
+
 # Object files for target off_yourself
 off_yourself_OBJECTS = \
-"CMakeFiles/off_yourself.dir/src/main.cpp.obj"
+"CMakeFiles/off_yourself.dir/src/main.cpp.obj" \
+"CMakeFiles/off_yourself.dir/src/costume.cpp.obj" \
+"CMakeFiles/off_yourself.dir/src/functions.cpp.obj" \
+"CMakeFiles/off_yourself.dir/src/game.cpp.obj" \
+"CMakeFiles/off_yourself.dir/src/gameObject.cpp.obj" \
+"CMakeFiles/off_yourself.dir/src/sprite.cpp.obj" \
+"CMakeFiles/off_yourself.dir/src/window.cpp.obj"
 
 # External object files for target off_yourself
 off_yourself_EXTERNAL_OBJECTS =
 
 off_yourself.exe: CMakeFiles/off_yourself.dir/src/main.cpp.obj
+off_yourself.exe: CMakeFiles/off_yourself.dir/src/costume.cpp.obj
+off_yourself.exe: CMakeFiles/off_yourself.dir/src/functions.cpp.obj
+off_yourself.exe: CMakeFiles/off_yourself.dir/src/game.cpp.obj
+off_yourself.exe: CMakeFiles/off_yourself.dir/src/gameObject.cpp.obj
+off_yourself.exe: CMakeFiles/off_yourself.dir/src/sprite.cpp.obj
+off_yourself.exe: CMakeFiles/off_yourself.dir/src/window.cpp.obj
 off_yourself.exe: CMakeFiles/off_yourself.dir/build.make
 off_yourself.exe: CMakeFiles/off_yourself.dir/linkLibs.rsp
 off_yourself.exe: CMakeFiles/off_yourself.dir/objects1.rsp
 off_yourself.exe: CMakeFiles/off_yourself.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\stani\Desktop\opengl\test2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable off_yourself.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\stani\Desktop\opengl\test2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable off_yourself.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\off_yourself.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
