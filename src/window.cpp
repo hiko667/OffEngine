@@ -118,15 +118,15 @@ void Window::pixel(int x, int y, int red = 255, int green = 255, int blue = 255)
     glVertex2i(x, y);
     glEnd();
 }
-void Window::drawRectangle(int x, int y, int red, int green, int blue)
+void Window::drawRectangle(int x, int y, int red, int green, int blue, int scale)
 {
     glColor3ub(red, green, blue);
     glBegin(GL_QUADS);
         // glPointSize(POINT_SIZE * Scale_Factor);
         glVertex2i(x, y);
-        glVertex2i(x + BACKGROUND_SCALING_FACTOR, y);
-        glVertex2i(x + BACKGROUND_SCALING_FACTOR, y + BACKGROUND_SCALING_FACTOR);
-        glVertex2i(x, y + BACKGROUND_SCALING_FACTOR);
+        glVertex2i(x + scale, y);
+        glVertex2i(x + scale, y + scale);
+        glVertex2i(x, y + scale);
     glEnd();
 }
 void Window::drawFrame()
@@ -171,14 +171,13 @@ void Window::drawSprite(Sprite sprite)
         pixel(pixelX, pixelY, point.color.r, point.color.g, point.color.b);
     }
 }
-void Window::drawBackgroundSprite(Sprite sprite)
+void Window::drawAtScale(Sprite sprite, int scale)
 {
     for(RelativePoint point : sprite.costumes[sprite.currentCostume].points)
     {
-        int scaledX = sprite.x + point.shift.sX * BACKGROUND_SCALING_FACTOR;
-        int scaledY = sprite.y + point.shift.sY * BACKGROUND_SCALING_FACTOR;
-        
-        drawRectangle(scaledX, scaledY, point.color.r, point.color.g, point.color.b);
+        int scaledX = sprite.x + point.shift.sX * scale;
+        int scaledY = sprite.y + point.shift.sY * scale;
+        drawRectangle(scaledX, scaledY, point.color.r, point.color.g, point.color.b, scale);
     }
 }
 //rendering functions
@@ -193,6 +192,6 @@ void Window::renderBackground()
 {
     for(Sprite sprite : game.getSpritesToRender())
     {
-        drawBackgroundSprite(sprite);
+        drawAtScale(sprite, BACKGROUND_SCALING_FACTOR);
     }
 }

@@ -24,11 +24,11 @@ class Window
         static void keyboard(unsigned char key, int x, int y);
         static void keyboardUp(unsigned char key, int x, int y);
         static void pixel(int x, int y, int red, int green, int blue);
-        static void drawRectangle(int x, int y, int red, int green, int blue);
+        static void drawRectangle(int x, int y, int red, int green, int blue, int scale);
         static void drawFrame();
         static void drawLine(int x1, int y1, int x2, int y2, int red, int green, int blue);
         static void drawSprite(Sprite sprite);
-        static void drawBackgroundSprite(Sprite sprite);
+        static void drawAtScale(Sprite sprite, int scale);
         static void renderSprites();
         static void renderBackground();
 };
