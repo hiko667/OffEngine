@@ -7,8 +7,8 @@ struct Time
 //to add handling of more keys just add them here
 struct Key
 {
-    bool w,a,s,d;
-    bool mouseLeft, mouseMiddle, mouseRight;
+    bool keysAscii[256];
+    bool mouseLeft, mouseRight, mouseMiddle;
 };
 
 struct ColorRGB

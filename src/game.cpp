@@ -48,11 +48,11 @@ void Game::setGameObjectPosition(std::string name, Point point)
         this->activeGameObjects.at(name).setPosition(point);
     }
 }
-void Game::notify(Key state)
+void Game::notify(Key state, int mouseX, int mouseY)
 {
-    if(state.w) this->moveGameObject("amogus", PixelVector {0, 10});
-    if(state.a) this->moveGameObject("amogus", PixelVector {-10, 0});
-    if(state.s) this->moveGameObject("amogus", PixelVector {0, -10});
-    if(state.d) this->moveGameObject("amogus", PixelVector {10, 0});
+    if(state.keysAscii[(int)'w']) this->moveGameObject("amogus", PixelVector {0, 10});
+    if(state.keysAscii[(int)'a']) this->moveGameObject("amogus", PixelVector {-10, 0});
+    if(state.keysAscii[(int)'s']) this->moveGameObject("amogus", PixelVector {0, -10});
+    if(state.keysAscii[(int)'d']) this->moveGameObject("amogus", PixelVector {10, 0});
 }
 

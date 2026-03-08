@@ -16,6 +16,6 @@ class Game
         void initializeObject(std::string name, std::vector<std::string> costumes);
         void moveGameObject(std::string name, PixelVector vec);
         void setGameObjectPosition(std::string name, Point point);
-        void notify(Key state);
+        void notify(Key state, int mouseX, int mouseY);
 };
 

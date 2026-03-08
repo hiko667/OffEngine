@@ -3,7 +3,7 @@
 #include <math.h>
 #include "constants.h"
 #include "window.h"
-
+#include <iostream>
 
 int Window::Window_Height = 0;
 int Window::Window_Width = 0;
@@ -38,11 +38,7 @@ Window::Window(int height, int width, const char * name)
 //initialization functions. It will read files in the future, than forward them to the game
 void Window::init()
 {
-    game.initializeObject("amogus", {"amogus.png"});
-    
-    game.initializeObject("sus", {"amogus.png"});
-
-    game.setGameObjectPosition("sus", (Point){100, 200});
+    game.initializeObject("amogus", {"background.png"});
 }
 //event functions
 void Window::reshape(int width, int height) 
@@ -66,7 +62,6 @@ void Window::reshape(int width, int height)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(0, MATRIX_WIDTH, 0, MATRIX_HEIGHT);
-    // glMatrixMode(GL_MODELVIEW); //line deleted for now, idk why fixes all the bad things in the world
     View_Height = viewHeight;
     View_Width = viewWidth;
     View_X = viewCenterX;
@@ -76,15 +71,15 @@ void Window::display()
 {
     if(T.time1 - T.time2 >= MILISECONDS_PER_FRAME)
     {
-        //functions to clear background
+        //functions to clear background. comment or uncomment one for debug purposes
         glClearColor( 0, 0, 0, 1 );
+        // glClearColor( 256, 256, 256, 1 );
         glClear( GL_COLOR_BUFFER_BIT );
         drawFrame();
         
-        game.notify(Window::globalKeyState);
-
-        renderSprites();
-        // game.moveGameObject("amogus", (PixelVector){5, 0});
+        game.notify(Window::globalKeyState, Mouse_X, Mouse_Y);
+        
+        renderBackground();
         T.time2 = T.time1;
         glutSwapBuffers();
     }
@@ -99,7 +94,6 @@ void Window::mouse(int x, int y)
     Mouse_Y = (1.0f - (relativeY / View_Height)) * MATRIX_HEIGHT;
     if (Mouse_X < 0) Mouse_X = 0; if (Mouse_X > MATRIX_WIDTH) Mouse_X = MATRIX_WIDTH;
     if (Mouse_Y < 0) Mouse_Y = 0; if (Mouse_Y > MATRIX_HEIGHT) Mouse_Y = MATRIX_HEIGHT;
-    // glutPostRedisplay(); //i dont know if we need ts
 }
 void Window::mouseButtons(int button, int state, int x, int y)
 {
@@ -109,18 +103,11 @@ void Window::mouseButtons(int button, int state, int x, int y)
 }
 void Window::keyboard(unsigned char key, int x, int y)
 {
-    
-    if(key == 'w') Window::globalKeyState.w = true;
-    if(key=='a') Window::globalKeyState.a = true;
-    if(key=='s') Window::globalKeyState.s = true;
-    if(key=='d') Window::globalKeyState.d = true;
+    globalKeyState.keysAscii[(int)key] = true;
 }
 void Window::keyboardUp(unsigned char key, int x, int y)
 {
-    if(key == 'w') Window::globalKeyState.w = false;
-    if(key=='a') Window::globalKeyState.a = false;
-    if(key=='s') Window::globalKeyState.s = false;
-    if(key=='d') Window::globalKeyState.d = false;
+    globalKeyState.keysAscii[(int)key] = false;
 }
 //drawing functions
 void Window::pixel(int x, int y, int red = 255, int green = 255, int blue = 255)
@@ -129,6 +116,17 @@ void Window::pixel(int x, int y, int red = 255, int green = 255, int blue = 255)
     glPointSize(POINT_SIZE * Scale_Factor);
     glColor3ub(red, green, blue);
     glVertex2i(x, y);
+    glEnd();
+}
+void Window::drawRectangle(int x, int y, int red, int green, int blue)
+{
+    glColor3ub(red, green, blue);
+    glBegin(GL_QUADS);
+        // glPointSize(POINT_SIZE * Scale_Factor);
+        glVertex2i(x, y);
+        glVertex2i(x + BACKGROUND_SCALING_FACTOR, y);
+        glVertex2i(x + BACKGROUND_SCALING_FACTOR, y + BACKGROUND_SCALING_FACTOR);
+        glVertex2i(x, y + BACKGROUND_SCALING_FACTOR);
     glEnd();
 }
 void Window::drawFrame()
@@ -173,11 +171,28 @@ void Window::drawSprite(Sprite sprite)
         pixel(pixelX, pixelY, point.color.r, point.color.g, point.color.b);
     }
 }
+void Window::drawBackgroundSprite(Sprite sprite)
+{
+    for(RelativePoint point : sprite.costumes[sprite.currentCostume].points)
+    {
+        int scaledX = sprite.x + point.shift.sX * BACKGROUND_SCALING_FACTOR;
+        int scaledY = sprite.y + point.shift.sY * BACKGROUND_SCALING_FACTOR;
+        
+        drawRectangle(scaledX, scaledY, point.color.r, point.color.g, point.color.b);
+    }
+}
 //rendering functions
 void Window::renderSprites()
 {
     for(Sprite sprite : game.getSpritesToRender())
     {
         drawSprite(sprite);
+    }
+}
+void Window::renderBackground()
+{
+    for(Sprite sprite : game.getSpritesToRender())
+    {
+        drawBackgroundSprite(sprite);
     }
 }
